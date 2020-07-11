@@ -22,11 +22,11 @@ class MainActivity: AppCompatActivity(), View.OnClickListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        et_username = findViewById(R.id.et_username);
-        et_password = findViewById(R.id.et_password);
-        et_code = findViewById(R.id.et_code);
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        et_username = findViewById(R.id.et_username)
+        et_password = findViewById(R.id.et_password)
+        et_code = findViewById(R.id.et_code)
 
         et_username.setText(CacheUtils.get(usernameKey))
         et_password.setText(CacheUtils.get(passwordKey))
@@ -35,6 +35,7 @@ class MainActivity: AppCompatActivity(), View.OnClickListener {
         val img_code = findViewById<CodeView>(R.id.code_view)
         btn_login.setOnClickListener(this)
         img_code.setOnClickListener(this)
+
     }
 
     override fun onClick(v: View?) {
@@ -51,7 +52,23 @@ class MainActivity: AppCompatActivity(), View.OnClickListener {
         val code = et_code.text.toString()
 
         val user = User(username, password, code)
-        if (verify(user)){
+
+        //提高代码可读性，但是会影响性能
+        fun verify(): Boolean{
+            if (user.username?.length ?: 0 < 4){
+                Utils.toast("用户名不合法")
+                return false
+            }
+
+            if (user.password?.length ?: 0 < 4){
+                Utils.toast("密码不合法")
+                return false
+            }
+
+            return true
+        }
+
+        if (verify()){
             CacheUtils.save(usernameKey, username)
             CacheUtils.save(passwordKey, password)
             startActivity(Intent(this, LessonActivity::class.java))
@@ -59,17 +76,4 @@ class MainActivity: AppCompatActivity(), View.OnClickListener {
 
     }
 
-    private fun verify(user: User): Boolean{
-        if (user.username != null && user.username!!.length < 4){
-            Utils.toast("用户名不合法")
-            return false
-        }
-
-        if (user.password != null && user.password!!.length < 4){
-            Utils.toast("密码不合法")
-            return false
-        }
-
-        return true
-    }
 }

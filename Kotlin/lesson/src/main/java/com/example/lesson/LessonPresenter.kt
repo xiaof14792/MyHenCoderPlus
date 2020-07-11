@@ -12,11 +12,11 @@ class LessonPresenter(var activity: LessonActivity) {
 
     private var lessons: List<Lesson> = ArrayList<Lesson>()
 
-    private val type = object : TypeToken<List<Lesson>>(){}.type
+    private val type = object : TypeToken<List<Lesson>>() {}.type
 
 
     fun fetchData() {
-        get<List<Lesson>>(LESSON_PATH, type, object : EntityCallback<List<Lesson>> {
+        get(LESSON_PATH, type, object : EntityCallback<List<Lesson>> {
             override fun onSuccess(lessons: List<Lesson>) {
                 this@LessonPresenter.lessons = lessons
                 activity.runOnUiThread { activity.showResult(lessons) }
@@ -29,12 +29,8 @@ class LessonPresenter(var activity: LessonActivity) {
     }
 
     fun showPlayback() {
-        val playbackLessons: MutableList<Lesson> = ArrayList()
-        for (lesson in lessons) {
-            if (lesson.state === Lesson.State.PLAYBACK) {
-                playbackLessons.add(lesson)
-            }
-        }
-        activity.showResult(playbackLessons)
+        activity.showResult(lessons.filter {
+            it.state === Lesson.State.PLAYBACK
+        })
     }
 }
