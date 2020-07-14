@@ -20,7 +20,7 @@ class LessonActivity : AppCompatActivity(), BaseView<LessonPresenter?>, Toolbar.
         LessonPresenter(this)
     }
 
-    var token: String by Saver("token") //属性set/get方法委托，每次都保存在缓存中或从缓存中去取
+    var token: String by Saver("token") //属性委托，每次都保存在缓存中或从缓存中去取
 
     class Saver(var token: String){
         operator fun getValue(lessonActivity: LessonActivity, property: KProperty<*>): String {

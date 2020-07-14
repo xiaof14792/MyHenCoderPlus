@@ -1,11 +1,18 @@
 package com.example.app.entity
 
+import okhttp3.Request
+import okhttp3.Response
+
 class View {
     fun setOnclickListener(listener: (View) -> Unit) {
 
     }
 
-    val call: (View) -> Unit)
+    fun setOnTouchListener(listener: (Int, Int) -> Unit) {
+
+    }
+
+    lateinit var call: (Request) -> Response?
 
 }
 
