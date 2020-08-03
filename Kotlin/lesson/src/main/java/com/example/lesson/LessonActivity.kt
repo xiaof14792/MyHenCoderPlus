@@ -56,6 +56,7 @@ class LessonActivity : AppCompatActivity(), BaseView<LessonPresenter?>, Toolbar.
         }
 
         presenter?.fetchData()
+
     }
 
     fun showResult(lessons: List<Lesson>) {
