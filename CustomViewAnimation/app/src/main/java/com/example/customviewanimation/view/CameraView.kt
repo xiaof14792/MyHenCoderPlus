@@ -1,10 +1,12 @@
-package com.example.customviewanimation
+package com.example.customviewanimation.view
 
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import com.example.customviewanimation.R
+import com.example.customviewanimation.dp
 
 private val IMAGE_SIZE = 200.dp
 private val IMAGE_PADDING = 100.dp
@@ -50,11 +52,14 @@ class CameraView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         camera.applyToCanvas(canvas)
         camera.restore()
         canvas.clipRect(
-            -IMAGE_SIZE, -IMAGE_SIZE, IMAGE_SIZE, 0f //这里因为旋转后裁切，所以应扩大裁切范围
+            -IMAGE_SIZE, -IMAGE_SIZE,
+            IMAGE_SIZE, 0f //这里因为旋转后裁切，所以应扩大裁切范围
         )
         canvas.rotate(flipRotation, 0f, 0f)
         canvas.translate(-IMAGE_PADDING - IMAGE_SIZE / 2, -IMAGE_PADDING - IMAGE_SIZE / 2)
-        canvas.drawBitmap(IMAGE, IMAGE_PADDING, IMAGE_PADDING, paint)
+        canvas.drawBitmap(IMAGE,
+            IMAGE_PADDING,
+            IMAGE_PADDING, paint)
         canvas.restore()
 
         //下半部分
@@ -66,11 +71,15 @@ class CameraView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         camera.applyToCanvas(canvas)
         camera.restore()
         canvas.clipRect(
-            -IMAGE_SIZE, 0f, IMAGE_SIZE, IMAGE_SIZE
+            -IMAGE_SIZE, 0f,
+            IMAGE_SIZE,
+            IMAGE_SIZE
         )
         canvas.rotate(flipRotation, 0f, 0f)
         canvas.translate(-IMAGE_PADDING - IMAGE_SIZE / 2, -IMAGE_PADDING - IMAGE_SIZE / 2)
-        canvas.drawBitmap(IMAGE, IMAGE_PADDING, IMAGE_PADDING, paint)
+        canvas.drawBitmap(IMAGE,
+            IMAGE_PADDING,
+            IMAGE_PADDING, paint)
         canvas.restore()
     }
 
@@ -78,11 +87,13 @@ class CameraView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
     fun getAvatar(width: Int): Bitmap {
         val options = BitmapFactory.Options()
         options.inJustDecodeBounds = true
-        BitmapFactory.decodeResource(resources, R.drawable.avatar, options)
+        BitmapFactory.decodeResource(resources,
+            R.drawable.avatar, options)
         options.inJustDecodeBounds = false
         options.inDensity = options.outWidth
         options.inTargetDensity = width
-        return BitmapFactory.decodeResource(resources, R.drawable.avatar, options)
+        return BitmapFactory.decodeResource(resources,
+            R.drawable.avatar, options)
     }
 }
 

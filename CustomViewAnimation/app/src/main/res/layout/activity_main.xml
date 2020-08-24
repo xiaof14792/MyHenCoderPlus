@@ -12,22 +12,22 @@
         android:layout_height="100dp"
         android:src="@drawable/avatar"/>-->
 
-    <!--<com.example.customviewanimation.CircleView
+    <!--<com.example.customviewanimation.view.CircleView
         android:id="@+id/circleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />-->
 
-    <!--<com.example.customviewanimation.CameraView
+    <!--<com.example.customviewanimation.view.CameraView
         android:id="@+id/cameraView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>-->
 
-    <!--<com.example.customviewanimation.PointFView
+    <!--<com.example.customviewanimation.view.PointFView
         android:id="@+id/pointFView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>-->
 
-    <com.example.customviewanimation.ProvinceView
+    <com.example.customviewanimation.view.ProvinceView
         android:id="@+id/provinceView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

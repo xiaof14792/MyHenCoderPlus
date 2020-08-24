@@ -1,4 +1,4 @@
-package com.example.customviewanimation
+package com.example.customviewanimation.view
 
 import android.animation.TypeEvaluator
 import android.content.Context
@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.example.customviewanimation.dp
 
 val provinces = listOf(
     "北京市",

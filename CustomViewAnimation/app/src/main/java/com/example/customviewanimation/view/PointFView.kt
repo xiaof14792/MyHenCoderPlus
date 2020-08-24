@@ -1,13 +1,13 @@
-package com.example.customviewanimation
+package com.example.customviewanimation.view
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.PointF
-import android.provider.CalendarContract
 import android.util.AttributeSet
 import android.view.View
+import com.example.customviewanimation.dp
 
 class PointFView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {

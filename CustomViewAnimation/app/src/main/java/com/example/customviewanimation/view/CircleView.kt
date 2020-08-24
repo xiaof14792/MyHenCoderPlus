@@ -1,10 +1,11 @@
-package com.example.customviewanimation
+package com.example.customviewanimation.view
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.example.customviewanimation.dp
 
 class CircleView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
