@@ -1,0 +1,3 @@
+include ':threadandroid'
+include ':app'
+rootProject.name = "ThreadAndroid"
